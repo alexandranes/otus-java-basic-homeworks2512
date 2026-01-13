@@ -9,7 +9,7 @@ public class Application {
         String StringToPrintNTimes = ("Java");
         printStringNTimes(StringToPrintNTimes, 3);
         // Задача 2
-        int[] arrayToSumFives = {2, 5, 8, 5, 4, 3, 5};
+        int[] arrayToSumFives = {2, 5, 8, 5, 9, 3, 13};
         sumAndPrintArrayElemBiggerThanFive(arrayToSumFives);
         // Задача 3
         int[] fillWithArgs = new int[20];
@@ -29,13 +29,13 @@ public class Application {
     }
     // Задача 2
     public static void sumAndPrintArrayElemBiggerThanFive(int[] in) {
-        int sumFives = 0;
+        int sumOfBiggerThanFives = 0;
         for (int i = 0; i < in.length; i++) {
-            if (in[i] == 5) {
-                sumFives += in[i];
+            if (in[i] > 5) {
+                sumOfBiggerThanFives += in[i];
             }
         }
-        System.out.println("Сумма чисел 5 равна " + sumFives + " для массива: " + Arrays.toString(in));
+        System.out.println("Сумма чисел больше 5 равна " + sumOfBiggerThanFives + " для массива: " + Arrays.toString(in));
     }
     // Задача 3
     public static void fillArrayWithArg(int[] in, int value) {
@@ -63,8 +63,10 @@ public class Application {
         }
         if (sumLeftHalf > sumRightHalf) {
             System.out.println("Сумма левой половины элементов больше суммы правой для массива: " + Arrays.toString(in));
-        } else {
+        } else if (sumLeftHalf < sumRightHalf) {
             System.out.println("Сумма правой половины элементов больше суммы левой для массива: " + Arrays.toString(in));
+        } else {
+            System.out.println("Сумма правой половины элементов равна сумме левой для массива: " + Arrays.toString(in));
         }
     }
 }
