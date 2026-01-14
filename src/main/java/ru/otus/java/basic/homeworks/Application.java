@@ -74,7 +74,7 @@ public class Application {
     // Задача 5
     public static int sumSecondLineElemOfArray(int[][] array) {
         int sum = 0;
-        if (array.length == 0) {
+        if (array.length == 1) {
             return -1;
         }
         for (int i = 0; i < array[0].length; i++) {
