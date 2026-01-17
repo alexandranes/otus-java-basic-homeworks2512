@@ -14,6 +14,11 @@ public class Application {
 
         // Задача 3
         int[][] array2DimTwo = new int [10][10];
+        for (int i = 0; i < array2DimTwo.length; i++) {
+            for (int j = 0; j < array2DimTwo[i].length; j++) {
+                array2DimTwo[i][j] = 1;
+            }
+        }
         assignZeroToDiagonElem(array2DimTwo);
 
         // Задача 4
@@ -39,9 +44,8 @@ public class Application {
     // Задача 2
     public static void printSquareOfAsterisks(int size) {
         for (int i = 0; i < size; i++) {
-            System.out.print('*' + "  ");
-            for (int j = 0; j < size - 1; j++) {
-                System.out.print('*' + "  ");
+            for (int j = 0; j < size; j++) {
+                System.out.print("*  ");
             }
             System.out.println();
         }
@@ -50,8 +54,8 @@ public class Application {
     public static void assignZeroToDiagonElem(int[][] array) {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
-                if (i != j) {
-                    array[i][j] = 1;
+                if (i == j) {
+                    array[i][j] = 0;
                 }
                 System.out.print(array[i][j] + "  ");
             }
@@ -77,7 +81,7 @@ public class Application {
         if (array.length == 1) {
             return -1;
         }
-        for (int i = 0; i < array[0].length; i++) {
+        for (int i = 0; i < array[1].length; i++) {
             sum += array[1][i];
         }
         System.out.println("Сумма чисел второй строки равна " + sum + " для массива: " + Arrays.deepToString(array));
