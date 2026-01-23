@@ -4,8 +4,8 @@ public class Box {
     private final String size;
     private String color;
     private String item;
-    private boolean boxOpen;
-    private boolean boxFull;
+    private boolean isBoxOpen;
+    private boolean isBoxFull;
 
     public String getSize() {
         return size;
@@ -26,30 +26,30 @@ public class Box {
     }
 
     public boolean isBoxOpen() {
-        return boxOpen;
+        return isBoxOpen;
     }
-    public void setBoxOpen(boolean boxOpen) {
-        this.boxOpen = boxOpen;
+    public void setBoxOpen(boolean isBoxOpen) {
+        this.isBoxOpen = isBoxOpen;
     }
 
     public boolean isBoxFull() {
-        return boxFull;
+        return isBoxFull;
     }
-    public void setBoxFull(boolean boxFull) {
-        this.boxFull = boxFull;
+    public void setBoxFull(boolean isBoxFull) {
+        this.isBoxFull = isBoxFull;
     }
 
-    public Box(String color, boolean boxOpen, boolean boxFull, String item) {
-        this.size = "12x12x12 см";
+    public Box(String size, String color, boolean isBoxOpen, boolean isBoxFull, String item) {
+        this.size = size;
         this.color = color;
         this.item = item;
-        this.boxOpen = boxOpen;
-        this.boxFull = boxFull;
+        this.isBoxOpen = isBoxOpen;
+        this.isBoxFull = isBoxFull;
     }
 
     public void info() {
         System.out.println("Коробка размера " + size + ", цвет: " +  color);
-        if (boxFull) {
+        if (isBoxFull) {
             System.out.println("В коробке " + item + ".");
         } else {
             System.out.println("Коробка пуста.");
@@ -57,27 +57,27 @@ public class Box {
     }
 
     public void open() {
-        if (!boxOpen) {
+        if (!isBoxOpen) {
             System.out.println("Коробку открыли.");
-            boxOpen = true;
+            isBoxOpen = true;
         } else {
             System.out.println("Коробку нельзя открыть, она уже открыта.");
         }
     }
 
     public void close() {
-        if (boxOpen) {
+        if (isBoxOpen) {
             System.out.println("Коробку закрыли.");
-            boxOpen = false;
+            isBoxOpen = false;
         } else {
             System.out.println("Коробку нельзя закрыть, она уже закрыта.");
         }
     }
 
     public void putItem() {
-        if (boxOpen) {
-            if (!boxFull) {
-                boxFull = true;
+        if (isBoxOpen) {
+            if (!isBoxFull) {
+                isBoxFull = true;
                 System.out.println("В коробку положили предмет: " + item + ".");
             } else {
                 System.out.println("Коробка заполнена - нельзя положить предмет: " + item+ ".");
@@ -89,9 +89,9 @@ public class Box {
     }
 
     public void removeItem () {
-        if (boxOpen) {
-            if (boxFull) {
-                boxFull = false;
+        if (isBoxOpen) {
+            if (isBoxFull) {
+                isBoxFull = false;
                 System.out.println("Из коробки вынули предмет: " + item+ ".");
             } else {
                 System.out.println("Коробка пуста - нельзя вынуть предмет: " + item+ ".");

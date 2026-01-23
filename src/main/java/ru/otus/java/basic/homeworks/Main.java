@@ -23,7 +23,7 @@ public class Main {
             }
 
         // Задача 2
-        Box box = new Box("белый", true, false, "чашка");
+        Box box = new Box("12x12x12 см","белый", true, false, "чашка");
         box.info();
         box.setColor("коричневый");
         box.close();
