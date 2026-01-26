@@ -5,13 +5,11 @@ public class Dog extends Animal {
     float swimSpeedPerSecond;
 
     public Dog(String name, float runSpeedPerSecond, float swimSpeedPerSecond, int endurance) {
+        super();
         this.name = name;
         this.runSpeedPerSecond = runSpeedPerSecond;
         this.swimSpeedPerSecond = swimSpeedPerSecond;
         this.endurance = endurance;
-        this.distance = distance;
-        this.time = time;
-        this.tired = tired;
     }
     @Override
     public float swim(int distance) {
