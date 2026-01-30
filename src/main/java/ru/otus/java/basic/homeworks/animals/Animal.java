@@ -54,23 +54,8 @@ public abstract class Animal {
             return time;
         }
     }
-    public float swim(int distance) {
-        if (endurance <= 0 || endurance < distance) {
-            tired = true;
-        }
-        if (!tired) {
-            time = distance / swimSpeedPerSecond;
-            endurance -= distance;
-            System.out.println(name + ": заплыв на дистанцию " + distance + " м, потрачено времени: " + time + " c.");
-            info();
-            return time;
-        } else {
-            time = -1.0f;
-            System.out.println(name + " не может плыть, недостаточно выносливости для заплыва на дистанцию: " + distance + " м.");
-            info();
-            return time;
-        }
-    }
+    public abstract float swim(int distance);
+
     public void info() {
         if (endurance <= 0) {
             System.out.println(name + " имеет уровень выносливости: 0. Усталость есть.");
