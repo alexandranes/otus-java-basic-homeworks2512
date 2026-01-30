@@ -4,6 +4,13 @@ public class Dog extends Animal {
 
     float swimSpeedPerSecond;
 
+    public float getSwimSpeedPerSecond() {
+        return swimSpeedPerSecond;
+    }
+    public void setSwimSpeedPerSecond(float swimSpeedPerSecond) {
+        this.swimSpeedPerSecond = swimSpeedPerSecond;
+    }
+
     public Dog(String name, float runSpeedPerSecond, float swimSpeedPerSecond, int endurance) {
         super();
         this.name = name;

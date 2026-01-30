@@ -4,6 +4,13 @@ public class Horse extends Animal {
 
     float swimSpeedPerSecond;
 
+    public float getSwimSpeedPerSecond() {
+        return swimSpeedPerSecond;
+    }
+    public void setSwimSpeedPerSecond(float swimSpeedPerSecond) {
+        this.swimSpeedPerSecond = swimSpeedPerSecond;
+    }
+
     public Horse(String name, float runSpeedPerSecond, float swimSpeedPerSecond, int endurance) {
         super();
         this.name = name;

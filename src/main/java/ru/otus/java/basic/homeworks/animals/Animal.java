@@ -3,7 +3,6 @@ package ru.otus.java.basic.homeworks.animals;
 public abstract class Animal {
     protected String name;
     protected float runSpeedPerSecond;
-    protected float swimSpeedPerSecond;
     protected int endurance;
     protected int distance;
     protected float time;
@@ -23,12 +22,6 @@ public abstract class Animal {
     }
     public void setEndurance(int endurance) {
         this.endurance = endurance;
-    }
-    public float getSwimSpeedPerSecond() {
-        return swimSpeedPerSecond;
-    }
-    public void setSwimSpeedPerSecond(float swimSpeedPerSecond) {
-        this.swimSpeedPerSecond = swimSpeedPerSecond;
     }
     public float getRunSpeedPerSecond() {
         return runSpeedPerSecond;
@@ -54,6 +47,7 @@ public abstract class Animal {
             return time;
         }
     }
+
     public abstract float swim(int distance);
 
     public void info() {
