@@ -2,19 +2,16 @@ package ru.otus.java.basic.homeworks;
 
 public class Person {
     private String name;
-    private boolean isOnTransport;
     private Transport currentTransport;
     private float endurance;
+    private final int ENDURANCE_EXPENDITURE_PER_FIXED_KM_NUMBER = 1000;
+    private final int FIXED_KM_NUMBER = 100;
 
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
-    }
-
-    public boolean isOnTransport() {
-        return isOnTransport;
     }
 
     public float getEndurance() {
@@ -35,40 +32,33 @@ public class Person {
     }
 
    public void getOnTransport(Transport transport) {
-       if (!isOnTransport) {
+       if (currentTransport == null) {
            currentTransport = transport;
            System.out.println(name + " использует транспорт: " + currentTransport.getType() + ".");
-           isOnTransport = true;
         } else {
            System.out.println("Действие невозможно, " + name + " уже использует транспорт: " + currentTransport.getType() + ".");
         }
    }
 
-    public boolean move(Person person, Transport transport, float distance, Terrain terrain) {
-        if (isOnTransport) {
-            if (transport.equals(currentTransport)) {
-                transport.move(person, distance, terrain);
-                return true;
-            } else {
-                System.out.println("Действие невозможно, " + name + " использует другой транспорт.");
-                return false;
-            }
+    public boolean move(Person person, float distance, Terrain terrain) {
+        float enduranceExpenditurePerDistance = ((distance * ENDURANCE_EXPENDITURE_PER_FIXED_KM_NUMBER) / FIXED_KM_NUMBER);
+        if (currentTransport != null) {
+            return currentTransport.move(person, distance, terrain);
         } else {
-            if (endurance < ((distance * 1000) / 100)) {
+            if (endurance < enduranceExpenditurePerDistance) {
                 System.out.println("Преодолеть дистанцию пешком невозможно: недостаточно энергии.");
                 return false;
             }
-            endurance -= ((distance * 1000) / 100);
+            endurance -= enduranceExpenditurePerDistance;
             System.out.println("Пешком преодолена дистанция: " + distance + " км, остаток энергии: " + endurance + ".");
             return true;
         }
     }
 
     public void getOffTransport() {
-        if (isOnTransport) {
+        if (currentTransport != null) {
             System.out.println(name + " покинул транспорт: " + currentTransport.getType() + ".");
             currentTransport = null;
-            isOnTransport = false;
         } else {
             System.out.println("Действие невозможно, " + name + " не использует транспорт.");
         }

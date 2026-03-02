@@ -17,31 +17,31 @@ public class Application {
         person.getOnTransport(car);
         person.getOnTransport(atv);
 
-        person.move(person, car, 30.0f, Terrain.PLAIN);
+        person.move(person, 30.0f, Terrain.PLAIN);
         person.getOffTransport();
         person.getOnTransport(atv);
-        person.move(person, atv, 30.0f, Terrain.PLAIN);
+        person.move(person, 30.0f, Terrain.PLAIN);
         person.getOffTransport();
         person.getOnTransport(horse);
-        person.move(person, horse, 10.0f, Terrain.PLAIN);
+        person.move(person, 10.0f, Terrain.PLAIN);
         person.getOffTransport();
         person.getOnTransport(bicycle);
-        person.move(person, bicycle, 5.0f, Terrain.PLAIN);
+        person.move(person, 5.0f, Terrain.PLAIN);
         person.getOffTransport();
-        person.move(person, bicycle, 5.0f, Terrain.PLAIN);
+        person.move(person, 5.0f, Terrain.PLAIN);
 
         person.getOnTransport(car);
-        person.move(person, car, 1000.0f, Terrain.PLAIN);
-        person.move(person, car, 30.0f, Terrain.THICK_FOREST);
-        person.move(person, car, 1000.0f, Terrain.THICK_FOREST);
+        person.move(person, 1000.0f, Terrain.PLAIN);
+        person.move(person, 30.0f, Terrain.THICK_FOREST);
+        person.move(person, 1000.0f, Terrain.THICK_FOREST);
         person.getOffTransport();
 
         person.getOnTransport(bicycle);
-        person.move(person, bicycle, 1000.0f, Terrain.PLAIN);
+        person.move(person, 1000.0f, Terrain.PLAIN);
         person.getOffTransport();
 
         person.getOnTransport(horse);
-        person.move(person, horse, 1000.0f, Terrain.PLAIN);
+        person.move(person, 1000.0f, Terrain.PLAIN);
         person.getOffTransport();
     }
 }

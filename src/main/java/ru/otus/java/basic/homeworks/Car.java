@@ -3,6 +3,8 @@ package ru.otus.java.basic.homeworks;
 public class Car implements Transport {
     private String type;
     private float gasAmount;
+    private final int GAS_EXPENDITURE_PER_FIXED_KM_NUMBER = 8;
+    private final int FIXED_KM_NUMBER = 100;
 
     @Override
     public String getType() {
@@ -28,17 +30,18 @@ public class Car implements Transport {
 
     @Override
     public boolean move(Person person, float distance, Terrain terrain) {
-        if (gasAmount < ((distance * 8) / 100) && (terrain == Terrain.THICK_FOREST || terrain == Terrain.SWAMPLAND)) {
+        float gasExpenditurePerDistance = ((distance * GAS_EXPENDITURE_PER_FIXED_KM_NUMBER) / FIXED_KM_NUMBER);
+        if (gasAmount < gasExpenditurePerDistance && (terrain == Terrain.THICK_FOREST || terrain == Terrain.SWAMPLAND)) {
             System.out.println("Действие невозможно: недостаточно топлива и выбран непроходимый тип местности.");
             return false;
-        } else if (gasAmount < ((distance * 8) / 100)) {
+        } else if (gasAmount < gasExpenditurePerDistance) {
             System.out.println("Действие невозможно: недостаточно топлива.");
             return false;
         } else if (terrain == Terrain.THICK_FOREST || terrain == Terrain.SWAMPLAND) {
             System.out.println("Действие невозможно: выбран непроходимый тип местности.");
             return false;
         }
-        gasAmount -= ((distance * 8) / 100);
+        gasAmount -= gasExpenditurePerDistance;
         System.out.println("Преодолена дистанция: " + distance + " км, остаток топлива: " + gasAmount + " л.");
         return true;
     }
