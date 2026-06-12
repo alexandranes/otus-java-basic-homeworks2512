@@ -8,7 +8,7 @@ public class Application {
         } catch (AppArraySizeException e) {
             System.out.println(e.getMessage());
         } catch (AppArrayDataException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
         String[][] smallStringArrayOfNum = {{"1", "1", "1"}, {"1", "1", "1"}, {"1", "1", "1"}, {"1", "1", "1"}};
@@ -17,7 +17,7 @@ public class Application {
         } catch (AppArraySizeException e) {
             System.out.println(e.getMessage());
         } catch (AppArrayDataException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
         String[][] stringArrayOfNumAndLet = {{"1", "1", "1", "1"}, {"1", "1", "1", "1"}, {"1", "1", "1", "1"}, {"1", "1", "1", "a"}};
@@ -26,27 +26,28 @@ public class Application {
         } catch (AppArraySizeException e) {
             System.out.println(e.getMessage());
         } catch (AppArrayDataException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
-    public static int convertToIntAndSum(String[][] array) throws AppArraySizeException, AppArrayDataException {
+    public static int convertToIntAndSum(String[][] array) {
+        if (array.length != 4) {
+            throw new AppArraySizeException("Неверный размер данных. Количество строк не равно 4.");
+        }
         for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                if (array.length != 4 || array[i].length != 4) {
-                    throw new AppArraySizeException("Неверный размер данных. Входной массив не равен 4х4.");
-                }
+            if (array[i].length != 4) {
+                throw new AppArraySizeException("Неверный размер данных. Количество столбцов в строке " + i + " не равно 4.");
             }
         }
         int sum = 0;
-        try {
-            for (int i = 0; i < array.length; i++) {
-                for (int j = 0; j < array[i].length; j++) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                try {
                     sum += Integer.parseInt(array[i][j]);
+                } catch (NumberFormatException e) {
+                    throw new AppArrayDataException("Неверный формат данных в ячейке [" + i + "][" + j + "]: " + array[i][j], e);
                 }
             }
-        } catch (NumberFormatException e) {
-            throw new AppArrayDataException("Неверный формат данных. Массив строк содержит элемент(ы) не типа int: ", e);
         }
         return sum;
     }
