@@ -50,9 +50,9 @@ public class Application {
     // Задача 2
     public static int sumElemBiggerThanFive(List<Integer> list) {
         int sum = 0;
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) > 5) {
-                sum += list.get(i);
+        for (int i : list) {
+            if (i > 5) {
+                sum += i;
             }
         }
         return sum;
@@ -77,8 +77,8 @@ public class Application {
     // Задача 5
     public static List<String> provideEmployeesNames(List<Employee> list) {
         List<String> employeesNames = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            employeesNames.add(list.get(i).getName());
+        for (Employee i : list) {
+            employeesNames.add(i.getName());
         }
         return employeesNames;
     }
@@ -86,9 +86,9 @@ public class Application {
     // Задача 6
     public static List<Employee> provideEmployeesOfGivenAgeOrOlder(List<Employee> list, int input) {
         List<Employee> employeesOfGivenAgeOrOlder = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getAge() >= input) {
-                employeesOfGivenAgeOrOlder.add(list.get(i));
+        for (Employee i : list) {
+            if (i.getAge() >= input) {
+                employeesOfGivenAgeOrOlder.add(i);
             }
         }
         return employeesOfGivenAgeOrOlder;
@@ -97,12 +97,11 @@ public class Application {
     // Задача 7
     public static boolean ensureThatEmployeesAverageAgeIsGreaterThanGiven(List<Employee> list, int input) {
         double a = 0;
-        double averageEmployeeAge = 0;
         boolean isEmployeesAverageAgeGreaterThanGiven = false;
-        for (int i = 0; i < list.size(); i++) {
-            a += list.get(i).getAge();
-            averageEmployeeAge = (a / list.size());
+        for (Employee i : list) {
+            a += i.getAge();
         }
+        double averageEmployeeAge = (a / list.size());
         if (averageEmployeeAge > input) {
             isEmployeesAverageAgeGreaterThanGiven = true;
         }
@@ -111,10 +110,10 @@ public class Application {
 
     // Задача 8
     public static Employee provideYoungestEmployee(List<Employee> list) {
-        Employee youngestEmployee = list.getFirst();
-        for (int i = 0; i < list.size(); i++) {
-            if (youngestEmployee.getAge() > list.get(i).getAge()) {
-                youngestEmployee = list.get(i);
+        Employee youngestEmployee = list.get(0);
+        for (Employee i : list) {
+            if (youngestEmployee.getAge() > i.getAge()) {
+                youngestEmployee = i;
             }
         }
         return youngestEmployee;
